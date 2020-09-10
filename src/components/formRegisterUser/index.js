@@ -1,15 +1,19 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { registerUser } from "../../redux/actions";
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { registerUser } from '../../redux/actions'
+import { useHistory } from 'react-router-dom'
 
 const FormRegisterUser = () => {
-  const { register, handleSubmit, watch, errors } = useForm();
-  const dispatch = useDispatch();
+  const { register, handleSubmit, watch, errors } = useForm()
+
+  const dispatch = useDispatch()
+  const history = useHistory()
 
   const onSubmit = (data) => {
-    dispatch(registerUser(data));
-  };
+    dispatch(registerUser(data))
+    history.push('/pedidos')
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -45,7 +49,7 @@ const FormRegisterUser = () => {
         value="REGISTRAR"
       />
     </form>
-  );
-};
+  )
+}
 
-export default FormRegisterUser;
+export default FormRegisterUser

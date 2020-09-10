@@ -1,13 +1,22 @@
-import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import Home from "../views/home";
+import React from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import Home from '../views/home'
+import Pedidos from '../views/pedidos'
 
-const Routes = () => {
+const Routes = ({ store }) => {
   return (
-    <BrowserRouter>
-      <Route path="/" component={Home}></Route>
-    </BrowserRouter>
-  );
-};
+    <Provider store={store}>
+      <BrowserRouter>
+        <Route path="/" exact>
+          <Home></Home>
+        </Route>
+        <Route path="/pedidos" exact>
+          <Pedidos></Pedidos>
+        </Route>
+      </BrowserRouter>
+    </Provider>
+  )
+}
 
-export default Routes;
+export default Routes

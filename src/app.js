@@ -1,14 +1,8 @@
-import React from "react";
-import Routes from "./routes/routes";
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
+import React from 'react'
+import Routes from './routes/routes'
 
-const App = () => {
-  return (
-    <Provider store={store}>
-      <Routes></Routes>
-    </Provider>
-  );
-};
+const App = ({store}) => {
+  return <Routes store={store}></Routes>
+}
 
-export default App;
+export default App

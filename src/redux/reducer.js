@@ -1,4 +1,4 @@
-import { REGISTER_USER } from "./type";
+import { REGISTER_USER, GET_DATA } from './type'
 
 export const userReducer = (state, action) => {
   switch (action.type) {
@@ -6,10 +6,15 @@ export const userReducer = (state, action) => {
       return {
         ...state,
         user: action.payload,
-      };
+      }
+
+    case GET_DATA:
+      return {
+        ...state,
+        data: action.payload,
+      }
 
     default:
-      console.log("ERROR NO REDUCER FOUND");
-      break;
+      return state
   }
-};
+}

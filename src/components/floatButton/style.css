@@ -1,0 +1,35 @@
+.float {
+  position: absolute;
+  bottom: 0px;
+  padding: 50px;
+  right: 0;
+  z-index: 999;
+}
+
+.float__button {
+  font-size: 1.5em;
+  border: none;
+  border-radius: 100%;
+  padding: 20px;
+  outline: none;
+  color: white;
+  background-color: tomato;
+}
+
+.float__button svg{
+  pointer-events: none;
+}
+
+.active {
+  animation: notification 500ms infinite ease alternate-reverse;
+}
+
+@keyframes notification {
+  0% {
+    font-size: 1.2em;
+  }
+
+  100% {
+    font-size: 1.8em;
+  }
+}

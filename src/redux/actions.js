@@ -1,14 +1,11 @@
-import { REGISTER_USER, GET_DATA } from './type'
-import { useDispatch } from 'react-redux'
+import { REGISTER_USER, ADD_PIZZA_TROLLEY } from './type';
 
 export const registerUser = (user) => ({
-  type: REGISTER_USER,
-  payload: user,
-})
+	type: REGISTER_USER,
+	payload: user
+});
 
-export const getDatos = (data) => {
-  return {
-    type: GET_DATA,
-    payload: data,
-  }
-}
+export const addPizzaTrolley = (pizza) => ({
+	type: ADD_PIZZA_TROLLEY,
+	payload: pizza
+});

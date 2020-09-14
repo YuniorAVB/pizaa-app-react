@@ -1,4 +1,4 @@
-import { REGISTER_USER, GET_DATA } from './type'
+import { REGISTER_USER, ADD_PIZZA_TROLLEY } from './type'
 
 export const userReducer = (state, action) => {
   switch (action.type) {
@@ -8,10 +8,10 @@ export const userReducer = (state, action) => {
         user: action.payload,
       }
 
-    case GET_DATA:
+    case ADD_PIZZA_TROLLEY:
       return {
         ...state,
-        data: action.payload,
+        trolley: [...state.trolley,action.payload],
       }
 
     default:

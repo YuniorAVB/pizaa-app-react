@@ -9,11 +9,13 @@ const initialState = {
     name:"Yunior",
     dni:"12345678"
   },
+  trolley:[]
+
 }
 
 const middleware = [thunk]
 
-const composeEnhancer = compose || window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+const composeEnhancer =  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||compose 
 
 export const store = createStore(
   userReducer,

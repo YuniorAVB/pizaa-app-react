@@ -1,44 +1,41 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import Loading from '../components/loading'
-import CardPizaa from '../components/cardPizaa'
-import NavBar from '../components/navbar'
-import FloatButton from '../components/floatButton'
-import pepperoni from '../assets/img/pepperoni.webp'
-import CardProduct from '../components/cardProduct'
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import Loading from '../components/loading';
+import CardPizaa from '../components/cardPizaa';
+import NavBar from '../components/navbar';
+import FloatButton from '../components/floatButton';
+import pepperoni from '../assets/img/pepperoni.webp';
+import CardProduct from '../components/cardProduct';
 
 const Pedidos = () => {
-  const user = useSelector((state) => state.user)
-  const [cardProductState, setCardProductState] = useState(false)
-  const [loadingState, setLoadingState] = useState(false)
+	const [ cardProductState, setCardProductState ] = useState(false);
+	const [ loadingState, setLoadingState ] = useState(false);
 
-  const handleClickFloatButton = () => {
-    setCardProductState(true)
-  }
+	const {user,trolley} = useSelector((state) => ({user:state.user,trolley:state.trolley}));
 
-  const hadleClickCloseCardProduct = () => {
-    setCardProductState(false)
-  }
+	const handleClickFloatButton = () => {
+		setCardProductState(true);
+	};
 
-  return (
-    <div className="container-fluid p-0">
-      <FloatButton handleClick={handleClickFloatButton}></FloatButton>
-      {cardProductState && (
-        <CardProduct
-          handleClickClose={hadleClickCloseCardProduct}
-        ></CardProduct>
-      )}
-      {loadingState && <Loading></Loading>}
+	const hadleClickCloseCardProduct = () => {
+		setCardProductState(false);
+	};
 
-      <NavBar user={user}></NavBar>
+	return (
+		<div className="container-fluid p-0">
+			<FloatButton handleClick={handleClickFloatButton} />
+			{cardProductState && <CardProduct handleClickClose={hadleClickCloseCardProduct} />}
+			{loadingState && <Loading />}
 
-      <div className="row p-0 m-0">
-        <div className="col-12">
-          <CardPizaa background={pepperoni}></CardPizaa>
-        </div>
-      </div>
-    </div>
-  )
-}
+			<NavBar user={user} />
 
-export default Pedidos
+			<div className="row p-0 m-0">
+				<div className="col-12">
+					<CardPizaa trolley={trolley}  background={pepperoni} idPizza={'1'} />
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default Pedidos;
